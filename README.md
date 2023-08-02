@@ -7,7 +7,7 @@
 
 <p align="left"> <a href="https://twitter.com/nikkii0123" target="blank"><img src="https://img.shields.io/twitter/follow/nikkii0123?logo=twitter&style=for-the-badge" alt="nikkii0123" /></a> </p>
 
-- 🔭 I’m currently working in **Scoodel as a flutter developer Intern.**
+- 🔭 I’m currently looking for opportunities in **Flutter App Development**
 
 - 🌱 I’m currently learning **BLOC State-management architecture.**
 
