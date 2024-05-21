@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class GithubService {
   final String readOnlyToken =
-      "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";
+      "abcd";
   VoidCallback? onLoaded;
   int _projects = 302;
   int _forks = 1;
