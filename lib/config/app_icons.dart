@@ -21,6 +21,7 @@ class AppIcons {
   static const devTo = AssetImage('assets/icons/dev-to.png');
   static const figma = AssetImage('assets/icons/figma.png');
   static const flutter = AssetImage('assets/icons/flutter.png');
+  static const swift = AssetImage('assets/icons/swift.png');
   static const firebase = AssetImage('assets/icons/firebase.png');
   static const gcp = AssetImage('assets/icons/gcp.png');
   static const linux = AssetImage('assets/icons/linux.png');

@@ -9,7 +9,7 @@ class Projects {
           icon: AppIcons.lotrconvertor,
           name: "LOTR Convertor App",
           technologies: {
-            AppIcons.flutter: "Implemented in SwiftUI",
+            AppIcons.swift: "Implemented in SwiftUI",
             AppIcons.server: "Server Code written in Swift",
           },
           info: "Turn currencies into precious treasures with our Lord of the Rings-inspired converter app!",
