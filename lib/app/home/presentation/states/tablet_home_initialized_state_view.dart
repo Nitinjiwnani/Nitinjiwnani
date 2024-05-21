@@ -61,10 +61,10 @@ class _TabletHomeInitializedStateViewState
               child: Column(
                 children: [
                   const Gap(30),
-                  const Image(
-                    image: AppIcons.avatar,
-                    width: 64,
-                  ),
+                  // const Image(
+                  //   image: AppIcons.avatar,
+                  //   width: 64,
+                  // ),
                   const Gap(20),
                   Text(
                     "Hi! I'm Nitin",
@@ -563,30 +563,87 @@ class _TabletHomeInitializedStateViewState
                           ],
                         ),
                         const Gap(50),
-                        GestureDetector(
-                          onTap: () {
-                            launchUrlString('https://kiranafast.com');
-                          },
-                          child: MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.25),
-                                    blurRadius: 16,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                launchUrlString('https://www.goscoodel.com/');
+                              },
+                              child: MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.25),
+                                        blurRadius: 16,
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(30),
-                                child: const Image(
-                                  image: AppIcons.kiranafast,
-                                  width: 172.5,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(30),
+                                    child: const Image(
+                                      image: AppIcons.scoodellogo,
+                                      width: 100,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
+                            Gap(20),
+                            GestureDetector(
+                              onTap: () {
+                                launchUrlString('https://kiranafast.com');
+                              },
+                              child: MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.25),
+                                        blurRadius: 16,
+                                      ),
+                                    ],
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(30),
+                                    child: const Image(
+                                      image: AppIcons.kiranafast,
+                                      width: 100,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Gap(20),
+                            GestureDetector(
+                              onTap: () {
+                                launchUrlString('https://www.billingfast.com/');
+                              },
+                              child: MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.25),
+                                        blurRadius: 16,
+                                      ),
+                                    ],
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(30),
+                                    child: const Image(
+                                      image: AppIcons.billingfast,
+                                      width: 100,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         const Gap(20),
                         Text(
