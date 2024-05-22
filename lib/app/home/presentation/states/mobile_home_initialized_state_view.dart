@@ -371,7 +371,7 @@ class _MobileHomeInitializedStateViewState
                                       "Node js.",
                                     ],
                                     info:
-                                          "Welcome to Relax, your ultimate sleep companion. Unwind, de-stress, and discover the sleep you deserve with our complete\nsleep wellness app. Designed to provide a tranquil experience, Relax offers curated content to help you unwind, fall asleep faster, and wake up refreshed.",
+                                          "Welcome to Relax, your ultimate sleep companion. Unwind, de-stress, and discover the sleep you deserve with our complete sleep wellness app. Designed to provide a tranquil experience, Relax offers curated content to help you unwind, fall asleep faster, and wake up refreshed.",
                                     url: 'https://apps.apple.com/in/app/relax-sleep-wellness-app/id6449683947',
                                   ),
                                     onVideoPlaying: () {},
