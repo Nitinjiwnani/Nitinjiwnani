@@ -121,11 +121,12 @@ class _TabletHomeInitializedStateViewState
                             ),
                             const Gap(20),
                             Text(
-                              "I love music, and Of Course, I sing too.",
+                              "I love music, and I love coding. And when I'm coding, I'm listening to music. 🎧",
                               style: AppTheme.fontSize(14).makeMedium(),
+                              textAlign: TextAlign.center,
                             ),
                             Text(
-                              "this one's my favourite",
+                              "This one's my favourite",
                               style: AppTheme.fontSize(14).makeMedium(),
                             ),
                             const Gap(20),
@@ -209,7 +210,7 @@ class _TabletHomeInitializedStateViewState
                             const Gap(15),
                             LinkButton(
                               text: "Gmail",
-                              url: AboutMe.gmailUrl,
+                              url: AboutMe.androidgmailurl,
                               image: AppIcons.gmail,
                               hoverColor: Colors.blue.shade200,
                               hoverTextColor: AppTheme.foreground,
@@ -335,7 +336,7 @@ class _TabletHomeInitializedStateViewState
                                       "Python",
                                     ],
                                     info:
-                                        "ScooDel is an application, developed to avail exclusive hyper local\ndeliveries as well as bike taxi services to all the customers in multiple cities.",
+                                        "ScooDel is an application, developed to avail exclusive hyper local deliveries as well as bike taxi services to all the customers in multiple cities.",
                                     url: 'https://www.goscoodel.com/',
                                   ),
                                   onVideoPlaying: () {},
@@ -358,7 +359,7 @@ class _TabletHomeInitializedStateViewState
                                       "Node js.",
                                     ],
                                     info:
-                                          "Welcome to Relax, your ultimate sleep companion. Unwind,\nde-stress, and discover the sleep you deserve with our complete\nsleep wellness app. Designed to provide a tranquil experience,\nRelax offers curated content to help you unwind, fall asleep faster,\nand wake up refreshed.",
+                                          "Welcome to Relax, your ultimate sleep companion. Unwind, de-stress, and discover the sleep you deserve with our complete sleep wellness app. Designed to provide a tranquil experience, Relax offers curated content to help you unwind, fall asleep faster, and wake up refreshed.",
                                     url: 'https://apps.apple.com/in/app/relax-sleep-wellness-app/id6449683947',
                                   ),
                                   onVideoPlaying: () {},
@@ -647,7 +648,7 @@ class _TabletHomeInitializedStateViewState
                         ),
                         const Gap(20),
                         Text(
-                          "I've recently worked as a Flutter Engineer at Kirana Fast",
+                          "I recently worked as a Flutter Engineer at Kirana Fast.",
                           style: AppTheme.fontSize(21).makeBold(),
                         ),
                         SizedBox(
@@ -689,10 +690,15 @@ class _TabletHomeInitializedStateViewState
                               ],
                             ),
                             const Gap(15),
-                            Text(
-                              "jiwnani01@gmail.com",
-                              style:
-                                  AppTheme.fontSize(16).makeMedium().useSen(),
+                            GestureDetector(
+                              onTap: () {
+                                launchUrlString(AboutMe.gmailUrl);
+                              },
+                              child: Text(
+                                "jiwnani01@gmail.com",
+                                style:
+                                    AppTheme.fontSize(16).makeMedium().useSen(),
+                              ),
                             ),
                             const Gap(10),
                             Row(
@@ -719,12 +725,12 @@ class _TabletHomeInitializedStateViewState
                                   image: AppIcons.reddit,
                                   url: AboutMe.redditUrl,
                                 ),
-                                Gap(10),
-                                LinkButton(
-                                  text: "Youtube",
-                                  image: AppIcons.youtube,
-                                  url: AboutMe.youtubeUrl,
-                                ),
+                                 Gap(10),
+                                    LinkButton(
+                                        text: "Linkedin",
+                                        image: AppIcons.linkedin,
+                                        url: AboutMe.linkedinUrl,
+                                      ),
                                 Gap(10),
                                 LinkButton(
                                   text: "Dev.to",

@@ -116,11 +116,12 @@ class _MobileHomeInitializedStateViewState
                             ),
                             const Gap(20),
                             Text(
-                              "I love music, and Of Course, I sing too.",
+                              "I love music, and I love coding. And when I'm coding, I'm listening to music. 🎧",
                               style: AppTheme.fontSize(14).makeMedium(),
+                              textAlign: TextAlign.center,
                             ),
                             Text(
-                              "this one's my favourite",
+                              "This one's my favourite",
                               style: AppTheme.fontSize(14).makeMedium(),
                             ),
                             const Gap(20),
@@ -208,7 +209,7 @@ class _MobileHomeInitializedStateViewState
                             const Gap(15),
                             LinkButton(
                               text: "Gmail",
-                              url: AboutMe.gmailUrl,
+                              url: AboutMe.androidgmailurl,
                               image: AppIcons.gmail,
                               hoverColor: Colors.blue.shade200,
                               hoverTextColor: AppTheme.foreground,
@@ -346,7 +347,7 @@ class _MobileHomeInitializedStateViewState
                                       "Python",
                                     ],
                                     info:
-                                        "ScooDel is an application, developed to avail exclusive hyper local\ndeliveries as well as bike taxi services to all the customers in multiple cities.",
+                                        "ScooDel is an application, developed to avail exclusive hyper local deliveries as well as bike taxi services to all the customers in multiple cities.",
                                     url: 'https://www.goscoodel.com/',
                                   ),
                                     onVideoPlaying: () {},
@@ -370,7 +371,7 @@ class _MobileHomeInitializedStateViewState
                                       "Node js.",
                                     ],
                                     info:
-                                          "Welcome to Relax, your ultimate sleep companion. Unwind,\nde-stress, and discover the sleep you deserve with our complete\nsleep wellness app. Designed to provide a tranquil experience,\nRelax offers curated content to help you unwind, fall asleep faster,\nand wake up refreshed.",
+                                          "Welcome to Relax, your ultimate sleep companion. Unwind, de-stress, and discover the sleep you deserve with our complete\nsleep wellness app. Designed to provide a tranquil experience, Relax offers curated content to help you unwind, fall asleep faster, and wake up refreshed.",
                                     url: 'https://apps.apple.com/in/app/relax-sleep-wellness-app/id6449683947',
                                   ),
                                     onVideoPlaying: () {},
@@ -691,7 +692,7 @@ class _MobileHomeInitializedStateViewState
                         ),
                         const Gap(20),
                         Text(
-                          "I'm currently the Lead Developer at Kirana Fast",
+                          "I recently worked as a Flutter Engineer at Kirana Fast.",
                           textAlign: TextAlign.center,
                           style: AppTheme.fontSize(14).makeBold(),
                         ),
@@ -737,10 +738,15 @@ class _MobileHomeInitializedStateViewState
                                 ],
                               ),
                               const Gap(15),
-                              Text(
-                                "jiwnani01@gmail.com",
-                                style:
-                                    AppTheme.fontSize(14).makeMedium().useSen(),
+                              GestureDetector(
+                                onTap: () {
+                                  launchUrlString(AboutMe.androidgmailurl);
+                                },
+                                child: Text(
+                                  "jiwnani01@gmail.com",
+                                  style:
+                                      AppTheme.fontSize(14).makeMedium().useSen(),
+                                ),
                               ),
                               const Gap(10),
                               Row(
@@ -772,6 +778,11 @@ class _MobileHomeInitializedStateViewState
                                         text: "Reddit",
                                         image: AppIcons.reddit,
                                         url: AboutMe.redditUrl,
+                                      ),
+                                      LinkButton(
+                                        text: "Linkedin",
+                                        image: AppIcons.linkedin,
+                                        url: AboutMe.linkedinUrl,
                                       ),
                                       LinkButton(
                                         text: "Youtube",

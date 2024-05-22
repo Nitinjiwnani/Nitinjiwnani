@@ -16,6 +16,7 @@ class AppIcons {
   static const cplus = AssetImage('assets/icons/c++.png');  
   static const sponsor = AssetImage('assets/icons/melting-hert.png');
   static const reddit = AssetImage('assets/icons/reddit.png');
+  static const linkedin = AssetImage('assets/icons/linkedin.png');
   static const instagram = AssetImage('assets/icons/instagram.png');
   static const youtube = AssetImage('assets/icons/youtube.png');
   static const devTo = AssetImage('assets/icons/dev-to.png');

@@ -129,11 +129,11 @@ class _DesktopHomeInitializedStateViewState
                             ),
                             const Gap(20),
                             Text(
-                              "I love music, and Of Course, I sing too.",
+                              "I love music, and I love coding. And when I'm coding, I'm listening to music. 🎧",
                               style: AppTheme.fontSize(14).makeMedium(),
                             ),
                             Text(
-                              "this one's my favourite",
+                              "This one's my favourite",
                               style: AppTheme.fontSize(14).makeMedium(),
                             ),
                             const Gap(20),
@@ -686,7 +686,7 @@ class _DesktopHomeInitializedStateViewState
                         ),
                         const Gap(20),
                         Text(
-                          "I've recently worked as a Flutter Engineer at Kirana Fast",
+                          "I recently worked as a Flutter Engineer at Kirana Fast.",
                           style: AppTheme.fontSize(21).makeBold(),
                         ),
                         Text(
@@ -724,10 +724,15 @@ class _DesktopHomeInitializedStateViewState
                               ],
                             ),
                             const Gap(15),
-                            Text(
-                              "jiwnani01@gmail.com",
-                              style:
-                                  AppTheme.fontSize(16).makeMedium().useSen(),
+                            GestureDetector(
+                              onTap: () {
+                                launchUrlString(AboutMe.androidgmailurl);
+                              },
+                              child: Text(
+                                "jiwnani01@gmail.com",
+                                style:
+                                    AppTheme.fontSize(16).makeMedium().useSen(),
+                              ),
                             ),
                             const Gap(10),
                             Row(
@@ -754,6 +759,12 @@ class _DesktopHomeInitializedStateViewState
                                   image: AppIcons.reddit,
                                   url: AboutMe.redditUrl,
                                 ),
+                                Gap(10),
+                                    LinkButton(
+                                        text: "Linkedin",
+                                        image: AppIcons.linkedin,
+                                        url: AboutMe.linkedinUrl,
+                                      ),
                                 Gap(10),
                                 LinkButton(
                                   text: "Youtube",
