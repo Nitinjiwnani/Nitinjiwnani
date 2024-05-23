@@ -21,11 +21,11 @@ class _SidePanelState extends State<SidePanel> {
   void initState() {
     super.initState();
     navs = {
-      "About": () => _scrollTo(640),
+      "About": () => _scrollTo(700),
       "Skills": () => _scrollTo(1750),
-      "Technologies": () => _scrollTo(4500),
-      "Projects": () => _scrollTo(5250),
-      "Experience": () => _scrollTo(10100),
+      "Technologies": () => _scrollTo(4250),
+      "Projects": () => _scrollTo(5100),
+      "Experience": () => _scrollTo(8600),
     };
     widget.scrollController.addListener(() {
       final scrollingUp =
@@ -54,26 +54,27 @@ class _SidePanelState extends State<SidePanel> {
     return Hero(
       tag: "nav-menu",
       child: AnimatedOpacity(
-        duration: Duration(milliseconds: 1200),
+        duration: const Duration(milliseconds: 1200),
         curve: Curves.easeInOut,
         opacity: show ? 1.0 : 0.0,
         child: AnimatedScale(
-          duration: Duration(milliseconds: 1200),
+          duration: const Duration(milliseconds: 1200),
           curve: Curves.easeInOut,
           scale: show ? 1 : 2.7,
           child: AnimatedRotation(
-            duration: Duration(milliseconds: 1200),
+            duration: const Duration(milliseconds: 1200),
             curve: Curves.easeInOut,
             turns: show ? 0 : -1,
             child: AnimatedSlide(
-              duration: Duration(milliseconds: 1200),
+              duration: const Duration(milliseconds: 1200),
               curve: Curves.easeInOut,
-              offset: show ? Offset(0, 0) : Offset(-1, -1),
+              offset: show ? const Offset(0, 0) : const Offset(-1, -1),
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.menu_rounded,
+                    color: Colors.grey,
                   ),
                   onPressed: () {
                     Get.dialog(
@@ -145,14 +146,14 @@ class _NavMenu extends StatelessWidget {
                     child: Container(
                       width: 40,
                       height: 40,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.only(
                           bottomRight: Radius.circular(20),
                           topLeft: Radius.circular(20),
                         ),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Icon(
                           Icons.close,
                           color: Colors.white,

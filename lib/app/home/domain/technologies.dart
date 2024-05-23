@@ -1,7 +1,7 @@
 class Technologies {
   static String get short =>
-      "Dart, Flutter, Firebase, Android & IOS Development, Web Development, Google Cloud Platform, "
-      "Cloud Functions, Git, GitHub, Linux & Windows System Administration, "
-      "C, C++, SQL, NoSQL, "
-      "JavaScript, Web Sockets, UI/UX Designing, Figma, REST API, Full-Stack, Firestore Database, Firebase Admin SDK";
+      "As a skilled Flutter Developer, I blend technical expertise with creative flair to design captivating user experiences. "
+      "Proficient in Flutter, Firebase, SQL, C++, and web development basics, I craft dynamic animations, custom UI elements,"
+      "and responsive designs. My focus is on delivering solutions that engage users and push technical boundaries, driven"
+      "by a commitment to continuous improvement and innovation. Always learning, growing in mobile development.";
 }

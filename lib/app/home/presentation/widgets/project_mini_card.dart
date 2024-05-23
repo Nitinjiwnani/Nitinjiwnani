@@ -39,7 +39,7 @@ class _ProjectMiniCardState extends State<ProjectMiniCard> {
           duration: const Duration(milliseconds: 250),
           curve: Curves.easeInOut,
           decoration: BoxDecoration(
-            color: hover ? Colors.grey.shade100 : Colors.white,
+            color: AppTheme.background, // Using theme colors
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
@@ -64,7 +64,11 @@ class _ProjectMiniCardState extends State<ProjectMiniCard> {
                     const Gap(10),
                     Text(
                       widget.description.name,
-                      style: AppTheme.fontSize(16).makeMedium(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const Gap(10),
                     Padding(
@@ -72,9 +76,11 @@ class _ProjectMiniCardState extends State<ProjectMiniCard> {
                       child: Text(
                         widget.description.info,
                         textAlign: TextAlign.center,
-                        style: AppTheme.fontSize(13)
-                            .makeMedium()
-                            .withColor(AppTheme.foregroundLighter),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     ),
                     const Gap(10),

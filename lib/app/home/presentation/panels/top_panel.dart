@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:gap/gap.dart';
-import 'package:flutter_portfolio/app/home/domain/about_me.dart';
 import 'package:flutter_portfolio/app/home/presentation/home_controller.dart';
-import 'package:flutter_portfolio/app/home/presentation/widgets/link_button.dart';
 import 'package:flutter_portfolio/app/home/presentation/widgets/nav_button.dart';
-import 'package:flutter_portfolio/config/app_icons.dart';
 import 'package:flutter_portfolio/config/app_theme.dart';
 
 class TopPanel extends StatefulWidget {
@@ -40,11 +36,11 @@ class _TopPanelState extends State<TopPanel> {
   void initState() {
     super.initState();
     navs = {
-      "About": () => _scrollTo(1600),
-      "Skills": () => _scrollTo(2600),
-      "Technologies": () => _scrollTo(3600),
-      "Projects": () => _scrollTo(4600),
-      "Experience": () => _scrollTo(6850),
+      "About": () => _scrollTo(1100),
+      "Skills": () => _scrollTo(2050),
+      "Technologies": () => _scrollTo(3100),
+      "Projects": () => _scrollTo(4000),
+      "Experience": () => _scrollTo(5950),
     };
     widget.scrollController.addListener(() {
       final scrollingUp =
@@ -101,11 +97,6 @@ class _TopPanelState extends State<TopPanel> {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // const Image(
-                    //   image: AppIcons.avatar,
-                    //   width: 22,
-                    // ),
-                    const Gap(4),
                     Text(
                       "Nitin Jiwnani",
                       style: AppTheme.fontSize(21).makeBold().useSen(),
@@ -121,14 +112,6 @@ class _TopPanelState extends State<TopPanel> {
                           .map(
                               (e) => NavButton(text: e.key, onPressed: e.value))
                           .toList(),
-                    ),
-                    const Gap(10),
-                    LinkButton(
-                      text: "Sponsor",
-                      url: AboutMe.githubSponsorUrl,
-                      image: AppIcons.sponsor,
-                      hoverColor: Colors.red.shade100,
-                      hoverTextColor: Colors.black,
                     ),
                   ],
                 ),

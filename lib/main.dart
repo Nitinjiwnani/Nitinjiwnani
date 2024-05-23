@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_portfolio/config/app_theme.dart';
-import 'package:flutter_portfolio/core/injector/injector.dart';
 import 'package:flutter_portfolio/core/routing/route_service.dart';
 
 void main() {
@@ -20,7 +19,6 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    Injector.inject();
   }
 
   @override
@@ -34,7 +32,7 @@ class _AppState extends State<App> {
       theme: ThemeData(
         fontFamily: "Satoshi",
         useMaterial3: true,
-        primaryColor: Colors.white,
+        primaryColor: Colors.black,
         primarySwatch: Colors.blue,
         fontFamilyFallback: const ["Sen"],
         tooltipTheme: TooltipThemeData(

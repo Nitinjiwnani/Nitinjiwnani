@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static Color background = HexColor.from("#ffffff");
-  static Color aboutBackground = HexColor.from("#f2f2f2");
-  static Color projectsBackground = HexColor.from("#FBF6EF");
+  static Color background = HexColor.from("#000B1F");
+  static Color aboutBackground = HexColor.from("#000B1F");
+  static Color projectsBackground = HexColor.from("#00285E");
   static Color experienceBackground = HexColor.from("#FFF3FA");
   static Color skillsBackground = HexColor.from("#ffffff");
-  static Color foreground = Colors.grey.shade900;
-  static Color foregroundLighter = Colors.grey.shade800;
+  static Color foreground = const Color(0xFFF0F0F0);
+  static Color foregroundLighter = HexColor.from("#0500FF");
   static Color buttonBorder = HexColor.from("#818181");
 
   static TextStyle get fontBold => TextStyle(

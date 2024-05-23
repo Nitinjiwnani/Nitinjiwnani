@@ -1,14 +1,12 @@
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
 import 'package:flutter_portfolio/app/home/domain/about_me.dart';
 import 'package:flutter_portfolio/app/home/domain/project_description.dart';
 import 'package:flutter_portfolio/app/home/domain/projects.dart';
 import 'package:flutter_portfolio/app/home/domain/skill_entity.dart';
 import 'package:flutter_portfolio/app/home/domain/technologies.dart';
 import 'package:flutter_portfolio/app/home/presentation/home_controller.dart';
-import 'package:flutter_portfolio/app/home/presentation/panels/side_panel.dart';
 import 'package:flutter_portfolio/app/home/presentation/widgets/favourite_music_player.dart';
 import 'package:flutter_portfolio/app/home/presentation/widgets/link_button.dart';
 import 'package:flutter_portfolio/app/home/presentation/widgets/project_card.dart';
@@ -18,8 +16,7 @@ import 'package:flutter_portfolio/config/app_artworks.dart';
 import 'package:flutter_portfolio/config/app_icons.dart';
 import 'package:flutter_portfolio/config/app_images.dart';
 import 'package:flutter_portfolio/config/app_theme.dart';
-import 'package:flutter_portfolio/core/service/github_service.dart';
-import 'package:flutter_portfolio/core/utils/utils.dart';
+import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class TabletHomeInitializedStateView extends StatefulWidget {
@@ -36,17 +33,6 @@ class _TabletHomeInitializedStateViewState
     extends State<TabletHomeInitializedStateView>
     with SingleTickerProviderStateMixin<TabletHomeInitializedStateView> {
   final scrollController = ScrollController();
-  final _service = Get.find<GithubService>();
-
-  @override
-  void initState() {
-    super.initState();
-    _service.onFetchComplete(() {
-      if (mounted) {
-        setState(() {});
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,19 +57,22 @@ class _TabletHomeInitializedStateViewState
                     style: AppTheme.fontSize(56).makeBold(),
                   ),
                   Text(
-                    "Designer. Developer. Creator.",
+                    "Application Developer",
                     style: AppTheme.fontSize(36)
                         .makeMedium()
                         .withColor(AppTheme.foregroundLighter),
                   ),
                   const Gap(10),
                   Text(
-                    "I thrive in crafting cutting-edge software and designs.",
+                    "I focus on delivering forward-thinking software and design creations.",
                     style: AppTheme.fontSize(16).makeMedium(),
+                    textAlign: TextAlign.center,
                   ),
-                  const Image(
-                    image: AppArtworks.hero,
+                  Lottie.asset(
+                    AppArtworks.rocket,
+                    repeat: true,
                     width: 1280,
+                    height: 550,
                   ),
                   Container(
                     width: MediaQuery.sizeOf(context).width,
@@ -96,7 +85,7 @@ class _TabletHomeInitializedStateViewState
                         height: 300,
                         child: Center(
                           child: Text(
-                            "A passionate and self-made developer, known for unleashing the full potential of technology in its most exceptional form.",
+                            "A determined and self-taught developer, valued for consistently delivering reliable technological solutions and advancements.",
                             textAlign: TextAlign.center,
                             style: AppTheme.fontSize(28).makeBold(),
                           ),
@@ -116,7 +105,7 @@ class _TabletHomeInitializedStateViewState
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Image(
-                              image: AppArtworks.hey,
+                              image: AppArtworks.smiley,
                               width: 402,
                             ),
                             const Gap(20),
@@ -161,24 +150,15 @@ class _TabletHomeInitializedStateViewState
                   const Gap(100),
                   Container(
                     width: MediaQuery.sizeOf(context).width,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          AppTheme.skillsBackground,
-                          AppTheme.background
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                    ),
+                    color: AppTheme.background,
                     child: Column(
                       children: [
                         Text(
-                          "Skill Exhibition",
+                          "Skill Showcase",
                           style: AppTheme.fontSize(56).makeBold(),
                         ),
                         Text(
-                          "“A perfect blend of the best”",
+                          "“Where Craft Meets Capability”",
                           style:
                               AppTheme.fontSize(21).makeMedium().makeItalic(),
                         ),
@@ -196,6 +176,41 @@ class _TabletHomeInitializedStateViewState
                                   .toList(),
                             ),
                           ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Gap(100),
+                  SizedBox(
+                    width: 1280,
+                    child: Column(
+                      children: [
+                        Text(
+                          "Technologies",
+                          style: AppTheme.fontSize(56).makeBold(),
+                        ),
+                        Text(
+                          "“the bleeding edge collection”",
+                          style:
+                              AppTheme.fontSize(21).makeMedium().makeItalic(),
+                        ),
+                        const Image(
+                          image: AppArtworks.robot,
+                          width: 960,
+                        ),
+                        const Gap(20),
+                        SizedBox(
+                          width: 750,
+                          child: Text(
+                            Technologies.short,
+                            textAlign: TextAlign.center,
+                            style: AppTheme.fontSize(14).makeMedium(),
+                          ),
+                        ),
+                        const Gap(15),
+                        Text(
+                          "Let's connect and collaborate on impactful projects! 😉",
+                          style: AppTheme.fontSize(15).makeMedium().makeBold(),
                         ),
                         const Gap(20),
                         Row(
@@ -220,54 +235,10 @@ class _TabletHomeInitializedStateViewState
                       ],
                     ),
                   ),
-                  const Gap(100),
-                  SizedBox(
-                    width: 1280,
-                    child: Column(
-                      children: [
-                        Text(
-                          "Technologies",
-                          style: AppTheme.fontSize(56).makeBold(),
-                        ),
-                        Text(
-                          "“the bleeding edge collection”",
-                          style:
-                              AppTheme.fontSize(21).makeMedium().makeItalic(),
-                        ),
-                        const Image(
-                          image: AppArtworks.langCollage,
-                          width: 960,
-                        ),
-                        const Gap(20),
-                        SizedBox(
-                          width: 750,
-                          child: Text(
-                            Technologies.short,
-                            textAlign: TextAlign.center,
-                            style: AppTheme.fontSize(14).makeMedium(),
-                          ),
-                        ),
-                        const Gap(15),
-                        Text(
-                          "and counting, I am a confident individual who never stops learning. 😉",
-                          style: AppTheme.fontSize(15).makeMedium().makeBold(),
-                        ),
-                      ],
-                    ),
-                  ),
                   const Gap(50),
                   Container(
                     width: MediaQuery.sizeOf(context).width,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          AppTheme.projectsBackground,
-                          AppTheme.background,
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                    ),
+                    color: AppTheme.background,
                     child: Center(
                       child: SizedBox(
                         width: 1280,
@@ -275,14 +246,15 @@ class _TabletHomeInitializedStateViewState
                           children: [
                             const Gap(50),
                             Text(
-                              "Project Gallery",
+                              "Portfolio Showcase",
                               style: AppTheme.fontSize(56).makeBold(),
                             ),
                             Text(
-                              "“mind blowing tech mixes”",
+                              "“Explore a mix of my professional endeavors and personal projects below”",
                               style: AppTheme.fontSize(21)
                                   .makeMedium()
                                   .makeItalic(),
+                              textAlign: TextAlign.center,
                             ),
                             const Gap(50),
                             Wrap(
@@ -293,8 +265,8 @@ class _TabletHomeInitializedStateViewState
                               children: [
                                 ProjectCard(
                                   gradientColors: const [
-                                    Color(0xFFEC8525),
-                                    Color(0xFF7D14D0)
+                                    Color(0xFF001F3F),
+                                    Color(0xFF00285E),
                                   ],
                                   image: AppImages.kiranafast,
                                   width: 600,
@@ -317,13 +289,13 @@ class _TabletHomeInitializedStateViewState
                                 ),
                                 ProjectCard(
                                   gradientColors: const [
-                                    Color(0xFF0DB29F),
-                                    Color(0xFFD0EF11)
+                                    Color(0xFF003F1F),
+                                    Color(0xFF004F2E),
                                   ],
                                   image: AppImages.scoodel,
                                   width: 600,
                                   imageWidth: 528.5,
-                                 playbackVideoUrl:
+                                  playbackVideoUrl:
                                       "https://firebasestorage.googleapis.com/v0/b/flutter-web-app-39833.appspot.com/o/scoodel.mp4?alt=media&token=a19f2ab2-c945-4c9b-b4a1-626862f3bc06",
                                   description: ProjectDescription(
                                     name: "Scoodel",
@@ -343,13 +315,13 @@ class _TabletHomeInitializedStateViewState
                                 ),
                                 ProjectCard(
                                   gradientColors: const [
-                                    Color(0xFFE44F1F),
-                                    Color(0xFFF91C86)
+                                    Color(0xFF1F003F),
+                                    Color(0xFF2E004F),
                                   ],
                                   image: AppImages.relaxapp,
                                   width: 600,
                                   imageWidth: 528.5,
-                                   playbackVideoUrl:
+                                  playbackVideoUrl:
                                       "https://firebasestorage.googleapis.com/v0/b/flutter-web-app-39833.appspot.com/o/dreemz.mp4?alt=media&token=66d55e98-d998-47f1-bd84-157160a14855",
                                   description: ProjectDescription(
                                     name: "Relax - Sleep Wellness App",
@@ -359,15 +331,16 @@ class _TabletHomeInitializedStateViewState
                                       "Node js.",
                                     ],
                                     info:
-                                          "Welcome to Relax, your ultimate sleep companion. Unwind, de-stress, and discover the sleep you deserve with our complete sleep wellness app. Designed to provide a tranquil experience, Relax offers curated content to help you unwind, fall asleep faster, and wake up refreshed.",
-                                    url: 'https://apps.apple.com/in/app/relax-sleep-wellness-app/id6449683947',
+                                        "Welcome to Relax, your ultimate sleep companion. Unwind, de-stress, and discover the sleep you deserve with our complete sleep wellness app. Designed to provide a tranquil experience, Relax offers curated content to help you unwind, fall asleep faster, and wake up refreshed.",
+                                    url:
+                                        'https://apps.apple.com/in/app/relax-sleep-wellness-app/id6449683947',
                                   ),
                                   onVideoPlaying: () {},
                                 ),
                                 ProjectCard(
                                   gradientColors: const [
-                                    Color(0xFF4E9FEA),
-                                    Color(0xFFF9C81C)
+                                    Color(0xFF3F1F00),
+                                    Color(0xFF4F2E00),
                                   ],
                                   image: AppImages.goaviralnews,
                                   width: 600,
@@ -411,19 +384,10 @@ class _TabletHomeInitializedStateViewState
                       ),
                     ),
                   ),
-                  const Gap(50),
+                  const Gap(25),
                   Container(
                     width: MediaQuery.sizeOf(context).width,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          AppTheme.experienceBackground,
-                          AppTheme.background,
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                    ),
+                    color: AppTheme.background,
                     child: Column(
                       children: [
                         const Gap(50),
@@ -432,136 +396,21 @@ class _TabletHomeInitializedStateViewState
                           style: AppTheme.fontSize(56).makeBold(),
                         ),
                         Text(
-                          "“way more than my age”",
+                          "“Skillset beyond expectations”",
                           style:
                               AppTheme.fontSize(21).makeMedium().makeItalic(),
                         ),
-                        Gap(25),
-                        LinkButton(
+                        const Gap(25),
+                        const LinkButton(
                           text: "Grab My Resume",
-                          image: AppIcons.ai,
+                          image: AppIcons.resume,
                           url: AboutMe.resumeUrl,
                         ),
                         const Gap(50),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: 200,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    "${_service.projects.toString().formatted}+",
-                                    style: AppTheme.fontSize(56)
-                                        .withColor(Colors.pink)
-                                        .makeBold(),
-                                  ),
-                                  const Gap(10),
-                                  Text(
-                                    "total contributions",
-                                    style: AppTheme.fontSize(16)
-                                        .withColor(Colors.black)
-                                        .makeMedium(),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 200,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    "${_service.stars.toString().formatted}+",
-                                    style: AppTheme.fontSize(56)
-                                        .withColor(Colors.pink)
-                                        .makeBold(),
-                                  ),
-                                  const Gap(10),
-                                  Text(
-                                    "stars on github",
-                                    style: AppTheme.fontSize(16)
-                                        .withColor(Colors.black)
-                                        .makeMedium(),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 200,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    "${_service.forks.toString().formatted}+",
-                                    style: AppTheme.fontSize(56)
-                                        .withColor(Colors.pink)
-                                        .makeBold(),
-                                  ),
-                                  const Gap(10),
-                                  Text(
-                                    "forks of my projects",
-                                    style: AppTheme.fontSize(16)
-                                        .withColor(Colors.black)
-                                        .makeMedium(),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Gap(50),
                         Text(
-                          "Contributed to",
+                          "Products I've contributed to during my tenure with various companies",
                           style: AppTheme.fontSize(36).makeMedium(),
-                        ),
-                        const Gap(20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                             GestureDetector(
-                              onTap: () {
-                                launchUrlString(
-                                    'https://github.com/Nitinjiwnani?tab=overview&from=2022-12-01&to=2022-12-31&org=JetBrains');
-                              },
-                              child: const MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: Image(
-                                  image: AppIcons.android,
-                                  width: 96,
-                                ),
-                              ),
-                            ),
-                            const Gap(20),
-                            GestureDetector(
-                              onTap: () {
-                                launchUrlString(
-                                    'https://github.com/Nitinjiwnani?from=2023-12-01&to=2023-12-31&org=vlang&year_list=1');
-                              },
-                              child: const MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: Image(
-                                  image: AppIcons.cplus,
-                                  width: 96,
-                                ),
-                              ),
-                            ),
-                            const Gap(20),
-                           GestureDetector(
-                              onTap: () {
-                                launchUrlString(
-                                    'https://github.com/Nitinjiwnani?tab=overview&from=2022-12-01&to=2022-12-31&org=flutter');
-                              },
-                              child: const MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: Image(
-                                  image: AppIcons.flutter,
-                                  width: 96,
-                                ),
-                              ),
-                            ),
-                          ],
+                          textAlign: TextAlign.center,
                         ),
                         const Gap(50),
                         Row(
@@ -592,7 +441,34 @@ class _TabletHomeInitializedStateViewState
                                 ),
                               ),
                             ),
-                            Gap(20),
+                            const Gap(20),
+                            GestureDetector(
+                              onTap: () {
+                                launchUrlString(
+                                    'https://apps.apple.com/in/app/relax-sleep-wellness-app/id6449683947');
+                              },
+                              child: MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.25),
+                                        blurRadius: 16,
+                                      ),
+                                    ],
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(30),
+                                    child: const Image(
+                                      image: AppIcons.relaxalogo,
+                                      width: 100,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const Gap(20),
                             GestureDetector(
                               onTap: () {
                                 launchUrlString('https://kiranafast.com');
@@ -618,7 +494,7 @@ class _TabletHomeInitializedStateViewState
                                 ),
                               ),
                             ),
-                            Gap(20),
+                            const Gap(20),
                             GestureDetector(
                               onTap: () {
                                 launchUrlString('https://www.billingfast.com/');
@@ -646,25 +522,10 @@ class _TabletHomeInitializedStateViewState
                             ),
                           ],
                         ),
-                        const Gap(20),
-                        Text(
-                          "I recently worked as a Flutter Engineer at Kirana Fast.",
-                          style: AppTheme.fontSize(21).makeBold(),
-                        ),
-                        SizedBox(
-                          width: 750,
-                          child: Text(
-                            "It's an Inventory, Billing, Accounting and Online Store Management System for the Indian FMCG industry",
-                            textAlign: TextAlign.center,
-                            style: AppTheme.fontSize(16)
-                                .withColor(Colors.pink.shade800)
-                                .makeBold(),
-                          ),
-                        ),
                       ],
                     ),
                   ),
-                  const Gap(100),
+                  const Gap(80),
                   Container(
                     width: MediaQuery.sizeOf(context).width,
                     color: AppTheme.background,
@@ -677,11 +538,6 @@ class _TabletHomeInitializedStateViewState
                             Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                // const Image(
-                                //   image: AppIcons.avatar,
-                                //   width: 22,
-                                // ),
-                                const Gap(4),
                                 Text(
                                   "Nitin Jiwnani",
                                   style:
@@ -721,21 +577,21 @@ class _TabletHomeInitializedStateViewState
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 LinkButton(
-                                  text: "Reddit",
-                                  image: AppIcons.reddit,
-                                  url: AboutMe.redditUrl,
+                                  text: "Linkedin",
+                                  image: AppIcons.linkedin,
+                                  url: AboutMe.linkedinUrl,
                                 ),
-                                 Gap(10),
-                                    LinkButton(
-                                        text: "Linkedin",
-                                        image: AppIcons.linkedin,
-                                        url: AboutMe.linkedinUrl,
-                                      ),
                                 Gap(10),
                                 LinkButton(
                                   text: "Dev.to",
                                   image: AppIcons.devTo,
                                   url: AboutMe.devToUrl,
+                                ),
+                                Gap(10),
+                                LinkButton(
+                                  text: "Reddit",
+                                  image: AppIcons.reddit,
+                                  url: AboutMe.redditUrl,
                                 ),
                                 Gap(10),
                                 LinkButton(

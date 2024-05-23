@@ -29,7 +29,7 @@ class _SkillCardState extends State<SkillCard> {
         width: 325,
         height: 260,
         decoration: BoxDecoration(
-          color: AppTheme.background,
+          color: const Color(0xff0A1F3A),
           borderRadius: BorderRadius.circular(hover ? 10 : 30),
           boxShadow: [
             BoxShadow(
@@ -130,7 +130,7 @@ class _SkillPointState extends State<SkillPoint> {
                               "point-idle-${DateTime.now().millisecondsSinceEpoch}"),
                           style: AppTheme.fontSize(14)
                               .makeMedium()
-                              .withColor(AppTheme.foregroundLighter),
+                              .withColor(HexColor.from("#D6D6D6")),
                         ),
                 ),
               ],

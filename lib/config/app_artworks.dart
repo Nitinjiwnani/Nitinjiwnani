@@ -2,11 +2,8 @@ import 'package:flutter/cupertino.dart';
 
 class AppArtworks {
   AppArtworks._();
-
-  static const multitasking =
-      AssetImage('assets/illustrations/multitasking.png');
-  static const hero = AssetImage('assets/illustrations/hero.png');
-  static const hey = AssetImage('assets/illustrations/hey.png');
-  static const langCollage =
-      AssetImage('assets/illustrations/lang-collage.png');
+  static const rocket = 'assets/illustrations/rocketcloud.json';
+  static const smiley = AssetImage('assets/illustrations/smiley.png');
+  static const robot =
+      AssetImage('assets/illustrations/robot.png');
 }

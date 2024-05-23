@@ -53,7 +53,7 @@ class _LinkButtonState extends State<LinkButton> {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
             decoration: BoxDecoration(
               color: hover
-                  ? (widget.hoverColor ?? Colors.grey.shade700)
+                  ? (widget.hoverColor ?? const Color.fromARGB(255, 101, 97, 97))
                   : Colors.grey.shade200,
               borderRadius: BorderRadius.circular(20),
             ),
@@ -83,7 +83,7 @@ class _LinkButtonState extends State<LinkButton> {
                               "link-idle-${DateTime.now().millisecondsSinceEpoch}-$hashCode"),
                           style: AppTheme.fontSize(13)
                               .useSen()
-                              .withColor(AppTheme.foreground)
+                              .withColor(AppTheme.background)
                               .makeMedium(),
                         ),
                 )

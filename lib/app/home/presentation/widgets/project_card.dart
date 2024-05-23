@@ -67,7 +67,7 @@ class _ProjectCardState extends State<ProjectCard> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
           decoration: BoxDecoration(
-            color: widget.gradientColors[1].withOpacity(0.2),
+            color: widget.gradientColors[1],
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(
