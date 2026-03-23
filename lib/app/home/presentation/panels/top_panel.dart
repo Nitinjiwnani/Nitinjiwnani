@@ -75,7 +75,8 @@ class _TopPanelState extends State<TopPanel> {
           boxShadow: showShadow
               ? [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.3),
+                    // FIX: withOpacity is deprecated in Flutter 3.x+
+                    color: Colors.grey.withValues(alpha: 0.3),
                     blurRadius: 4,
                     offset: const Offset(0, 3),
                   ),

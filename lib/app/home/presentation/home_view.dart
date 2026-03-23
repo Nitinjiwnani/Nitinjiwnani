@@ -24,6 +24,15 @@ class _HomeViewState extends AppPage<HomeView> {
     controller = HomeController(
       uiRebuildCallback: rebuild,
     );
+
+    // FIX: initialize() was previously called inside build() getters on every
+    // render, which could trigger repeated async calls and setState during build.
+    // It must only be called once, safely after the first frame.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        controller.initialize(context);
+      }
+    });
   }
 
   @override
@@ -31,7 +40,6 @@ class _HomeViewState extends AppPage<HomeView> {
     final currentState = controller.getCurrentState();
     switch (currentState.runtimeType) {
       case const (HomeLoadingState):
-        controller.initialize(context);
         return const LoadingPage();
       case const (HomeInitializedState):
         return DesktopHomeInitializedStateView(controller: controller);
@@ -44,7 +52,6 @@ class _HomeViewState extends AppPage<HomeView> {
     final currentState = controller.getCurrentState();
     switch (currentState.runtimeType) {
       case const (HomeLoadingState):
-        controller.initialize(context);
         return const LoadingPage();
       case const (HomeInitializedState):
         return TabletHomeInitializedStateView(controller: controller);
@@ -57,7 +64,6 @@ class _HomeViewState extends AppPage<HomeView> {
     final currentState = controller.getCurrentState();
     switch (currentState.runtimeType) {
       case const (HomeLoadingState):
-        controller.initialize(context);
         return const LoadingPage();
       case const (HomeInitializedState):
         return MobileHomeInitializedStateView(controller: controller);

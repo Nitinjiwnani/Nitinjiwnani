@@ -17,6 +17,10 @@ class _SidePanelState extends State<SidePanel> {
   Map<String, VoidCallback> navs = {};
   bool show = true;
 
+  // Tracks whether the nav dialog is currently open so we only call
+  // Get.back() when it is actually showing.
+  bool _isDialogOpen = false;
+
   @override
   void initState() {
     super.initState();
@@ -40,7 +44,13 @@ class _SidePanelState extends State<SidePanel> {
   }
 
   void _scrollTo(double offset) async {
-    Get.back();
+    // FIX: Previously called Get.back() unconditionally, which would pop the
+    // navigation stack even when no dialog was open, causing routing bugs.
+    // Now only dismisses when the nav dialog is actually open.
+    if (_isDialogOpen) {
+      Get.back();
+      _isDialogOpen = false;
+    }
     await Future.delayed(const Duration(milliseconds: 500));
     widget.scrollController.animateTo(
       offset,
@@ -77,11 +87,15 @@ class _SidePanelState extends State<SidePanel> {
                     color: Colors.grey,
                   ),
                   onPressed: () {
+                    _isDialogOpen = true;
                     Get.dialog(
                       _NavMenu(navs: navs),
                       barrierColor: Colors.transparent,
                       name: '',
-                    );
+                    ).then((_) {
+                      // Dialog closed by tapping barrier or back button
+                      _isDialogOpen = false;
+                    });
                   },
                 ),
               ),
@@ -119,7 +133,8 @@ class _NavMenu extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
+                          // FIX: withOpacity is deprecated in Flutter 3.x+
+                          color: Colors.grey.withValues(alpha: 0.3),
                           blurRadius: 16,
                         ),
                       ],

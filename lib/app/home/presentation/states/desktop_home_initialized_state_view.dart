@@ -35,6 +35,13 @@ class _DesktopHomeInitializedStateViewState
     with SingleTickerProviderStateMixin<DesktopHomeInitializedStateView> {
   final scrollController = ScrollController();
 
+  // FIX: ScrollController was never disposed, causing a memory leak.
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
   void _scrollTo(double offset) async {
     await Future.delayed(const Duration(milliseconds: 500));
     scrollController.animateTo(
@@ -46,20 +53,22 @@ class _DesktopHomeInitializedStateViewState
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
+
     return Scaffold(
       backgroundColor: AppTheme.background,
       body: Stack(
         children: [
+          // ── Main scroll content ──────────────────────────────────────────
           Align(
             alignment: Alignment.topCenter,
             child: SingleChildScrollView(
               controller: scrollController,
               child: Column(
                 children: [
-                  SizedBox(
-                    width: MediaQuery.sizeOf(context).width,
-                    height: 160,
-                  ),
+                  SizedBox(width: screenWidth, height: 160),
+
+                  // ── Hero ────────────────────────────────────────────────
                   Text(
                     "Hi! I'm Nitin",
                     style: AppTheme.fontSize(56).makeBold(),
@@ -80,12 +89,13 @@ class _DesktopHomeInitializedStateViewState
                     repeat: true,
                     width: 1280,
                     height: 750,
+                    // Desktop can handle full res — no quality cap needed here.
                   ),
+
+                  // ── About banner ────────────────────────────────────────
                   Container(
-                    width: MediaQuery.sizeOf(context).width,
-                    decoration: BoxDecoration(
-                      color: AppTheme.aboutBackground,
-                    ),
+                    width: screenWidth,
+                    decoration: BoxDecoration(color: AppTheme.aboutBackground),
                     child: Center(
                       child: SizedBox(
                         width: 1000,
@@ -100,12 +110,12 @@ class _DesktopHomeInitializedStateViewState
                       ),
                     ),
                   ),
+
+                  // ── About content ───────────────────────────────────────
                   Container(
                     width: 1280,
                     height: 600,
-                    decoration: BoxDecoration(
-                      color: AppTheme.background,
-                    ),
+                    decoration: BoxDecoration(color: AppTheme.background),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -152,12 +162,12 @@ class _DesktopHomeInitializedStateViewState
                       ],
                     ),
                   ),
+
+                  // ── Skills ──────────────────────────────────────────────
                   const Gap(100),
                   Container(
-                    width: MediaQuery.sizeOf(context).width,
-                    decoration: BoxDecoration(
-                      color: AppTheme.background,
-                    ),
+                    width: screenWidth,
+                    decoration: BoxDecoration(color: AppTheme.background),
                     child: Column(
                       children: [
                         Text(
@@ -165,9 +175,8 @@ class _DesktopHomeInitializedStateViewState
                           style: AppTheme.fontSize(56).makeBold(),
                         ),
                         Text(
-                          "“Where Craft Meets Capability”",
-                          style:
-                              AppTheme.fontSize(21).makeMedium().makeItalic(),
+                          "\u201cWhere Craft Meets Capability\u201d",
+                          style: AppTheme.fontSize(21).makeMedium().makeItalic(),
                         ),
                         const Gap(50),
                         SizedBox(
@@ -187,6 +196,8 @@ class _DesktopHomeInitializedStateViewState
                       ],
                     ),
                   ),
+
+                  // ── Technologies ────────────────────────────────────────
                   const Gap(100),
                   SizedBox(
                     width: 1280,
@@ -197,14 +208,10 @@ class _DesktopHomeInitializedStateViewState
                           style: AppTheme.fontSize(56).makeBold(),
                         ),
                         Text(
-                          "“A forward-thinking array”",
-                          style:
-                              AppTheme.fontSize(21).makeMedium().makeItalic(),
+                          "\u201cA forward-thinking array\u201d",
+                          style: AppTheme.fontSize(21).makeMedium().makeItalic(),
                         ),
-                        const Image(
-                          image: AppArtworks.robot,
-                          // width: 960,
-                        ),
+                        const Image(image: AppArtworks.robot),
                         const Gap(20),
                         SizedBox(
                           width: 800,
@@ -242,9 +249,11 @@ class _DesktopHomeInitializedStateViewState
                       ],
                     ),
                   ),
+
+                  // ── Projects ────────────────────────────────────────────
                   const Gap(50),
                   Container(
-                    width: MediaQuery.sizeOf(context).width,
+                    width: screenWidth,
                     color: AppTheme.background,
                     child: Center(
                       child: SizedBox(
@@ -257,10 +266,8 @@ class _DesktopHomeInitializedStateViewState
                               style: AppTheme.fontSize(56).makeBold(),
                             ),
                             Text(
-                              "“Explore a mix of my professional endeavors and personal projects below”",
-                              style: AppTheme.fontSize(21)
-                                  .makeMedium()
-                                  .makeItalic(),
+                              "\u201cExplore a mix of my professional endeavors and personal projects below\u201d",
+                              style: AppTheme.fontSize(21).makeMedium().makeItalic(),
                             ),
                             const Gap(50),
                             Wrap(
@@ -290,9 +297,7 @@ class _DesktopHomeInitializedStateViewState
                                         "Manage inventory and create bills easily with Kirana Fast,\nthe easiest all-in-one inventory management and billing app.",
                                     url: 'https://www.kiranafast.com/',
                                   ),
-                                  onVideoPlaying: () {
-                                    _scrollTo(4700);
-                                  },
+                                  onVideoPlaying: () => _scrollTo(4700),
                                 ),
                                 ProjectCard(
                                   gradientColors: const [
@@ -317,9 +322,7 @@ class _DesktopHomeInitializedStateViewState
                                         "ScooDel is an application, developed to avail exclusive hyper local\ndeliveries as well as bike taxi services to all the customers in multiple cities.",
                                     url: 'https://www.goscoodel.com/',
                                   ),
-                                  onVideoPlaying: () {
-                                    _scrollTo(5400);
-                                  },
+                                  onVideoPlaying: () => _scrollTo(5400),
                                 ),
                                 ProjectCard(
                                   gradientColors: const [
@@ -338,13 +341,11 @@ class _DesktopHomeInitializedStateViewState
                                       "Node js.",
                                     ],
                                     info:
-                                        "Welcome to Relax, your ultimate sleep companion. Unwind,\nde-stress, and discover the sleep you deserve with our complete\nsleep wellness app. Designed to provide a tranquil experience,\nRelax offers curated content to help you unwind, fall asleep faster,\nand wake up refreshed.",
+                                        "Welcome to Relax, your ultimate sleep companion. Unwind,\nde-stress, and discover the sleep you deserve with our complete\nsleep wellness app.",
                                     url:
                                         'https://apps.apple.com/in/app/relax-sleep-wellness-app/id6449683947',
                                   ),
-                                  onVideoPlaying: () {
-                                    _scrollTo(5400);
-                                  },
+                                  onVideoPlaying: () => _scrollTo(5400),
                                 ),
                                 ProjectCard(
                                   gradientColors: const [
@@ -367,9 +368,7 @@ class _DesktopHomeInitializedStateViewState
                                     url:
                                         'https://play.google.com/store/apps/details?id=com.goaviralnews.goaviralnews&hl=en&gl=US',
                                   ),
-                                  onVideoPlaying: () {
-                                    _scrollTo(6000);
-                                  },
+                                  onVideoPlaying: () => _scrollTo(6000),
                                 ),
                               ],
                             ),
@@ -394,9 +393,10 @@ class _DesktopHomeInitializedStateViewState
                       ),
                     ),
                   ),
-                  // const Gap(50),
+
+                  // ── Experience ──────────────────────────────────────────
                   Container(
-                    width: MediaQuery.sizeOf(context).width,
+                    width: screenWidth,
                     color: AppTheme.background,
                     child: Column(
                       children: [
@@ -406,9 +406,8 @@ class _DesktopHomeInitializedStateViewState
                           style: AppTheme.fontSize(56).makeBold(),
                         ),
                         Text(
-                          "“Skillset beyond expectations”",
-                          style:
-                              AppTheme.fontSize(21).makeMedium().makeItalic(),
+                          "\u201cSkillset beyond expectations\u201d",
+                          style: AppTheme.fontSize(21).makeMedium().makeItalic(),
                         ),
                         const Gap(25),
                         const LinkButton(
@@ -423,121 +422,55 @@ class _DesktopHomeInitializedStateViewState
                           textAlign: TextAlign.center,
                         ),
                         const Gap(50),
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                launchUrlString('https://www.goscoodel.com/');
-                              },
-                              child: MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.25),
-                                        blurRadius: 16,
-                                      ),
-                                    ],
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(30),
-                                    child: const Image(
-                                      image: AppIcons.scoodellogo,
-                                      width: 165,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                            CompanyLogo(
+                              url: 'https://www.goscoodel.com/',
+                              image: AppIcons.scoodellogo,
+                              size: 165,
                             ),
-                            const Gap(20),
-                            GestureDetector(
-                              onTap: () {
-                                launchUrlString(
-                                    'https://apps.apple.com/in/app/relax-sleep-wellness-app/id6449683947');
-                              },
-                              child: MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.25),
-                                        blurRadius: 16,
-                                      ),
-                                    ],
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(30),
-                                    child: const Image(
-                                      image: AppIcons.relaxalogo,
-                                      width: 165,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                            Gap(20),
+                            CompanyLogo(
+                              url:
+                                  'https://apps.apple.com/in/app/relax-sleep-wellness-app/id6449683947',
+                              image: AppIcons.relaxalogo,
+                              size: 165,
                             ),
-                            const Gap(20),
-                            GestureDetector(
-                              onTap: () {
-                                launchUrlString('https://kiranafast.com');
-                              },
-                              child: MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.25),
-                                        blurRadius: 16,
-                                      ),
-                                    ],
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(30),
-                                    child: const Image(
-                                      image: AppIcons.kiranafast,
-                                      width: 165,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                            Gap(20),
+                            CompanyLogo(
+                              url: 'https://kiranafast.com',
+                              image: AppIcons.kiranafast,
+                              size: 165,
                             ),
-                            const Gap(20),
-                            GestureDetector(
-                              onTap: () {
-                                launchUrlString('https://www.billingfast.com/');
-                              },
-                              child: MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.25),
-                                        blurRadius: 16,
-                                      ),
-                                    ],
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(30),
-                                    child: const Image(
-                                      image: AppIcons.billingfast,
-                                      width: 165,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                            Gap(20),
+                            CompanyLogo(
+                              url: 'https://www.billingfast.com/',
+                              image: AppIcons.billingfast,
+                              size: 165,
+                            ),
+                            Gap(20),
+                            CompanyLogo(
+                              url: 'https://apps.apple.com/us/app/sports-fiesta/id6744070305',
+                              image: AppIcons.sportsFiesta,
+                              size: 165,
+                            ),
+                            Gap(20),
+                            CompanyLogo(
+                              url: 'https://bhruguastrology.com/',
+                              image: AppIcons.bhruguAstrology,
+                              size: 165,
                             ),
                           ],
                         ),
                       ],
                     ),
                   ),
+
+                  // ── Footer ──────────────────────────────────────────────
                   const Gap(100),
                   Container(
-                    width: MediaQuery.sizeOf(context).width,
+                    width: screenWidth,
                     color: AppTheme.background,
                     child: Center(
                       child: SizedBox(
@@ -548,10 +481,6 @@ class _DesktopHomeInitializedStateViewState
                             Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                // const Image(
-                                //   image: AppIcons.avatar,
-                                //   width: 22,
-                                // ),
                                 const Gap(4),
                                 Text(
                                   "Nitin Jiwnani",
@@ -562,9 +491,8 @@ class _DesktopHomeInitializedStateViewState
                             ),
                             const Gap(15),
                             GestureDetector(
-                              onTap: () {
-                                launchUrlString(AboutMe.androidgmailurl);
-                              },
+                              onTap: () =>
+                                  launchUrlString(AboutMe.androidgmailurl),
                               child: Text(
                                 "jiwnani01@gmail.com",
                                 style:
@@ -651,6 +579,8 @@ class _DesktopHomeInitializedStateViewState
               ),
             ),
           ),
+
+          // ── Top nav bar ───────────────────────────────────────────────────
           Align(
             alignment: Alignment.topCenter,
             child: TopPanel(
@@ -658,6 +588,8 @@ class _DesktopHomeInitializedStateViewState
               scrollController: scrollController,
             ),
           ),
+
+          // ── Particle background (desktop only — intentional) ──────────────
           Align(
             child: AnimatedBackground(
               vsync: this,
@@ -674,12 +606,54 @@ class _DesktopHomeInitializedStateViewState
                 ),
               ),
               child: SizedBox(
-                width: MediaQuery.sizeOf(context).width,
+                width: screenWidth,
                 height: MediaQuery.sizeOf(context).height,
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Reusable tappable company logo widget — eliminates the repeated
+/// GestureDetector + MouseRegion + BoxDecoration + ClipRRect pattern.
+class CompanyLogo extends StatelessWidget {
+  const CompanyLogo({super.key, 
+    required this.url,
+    required this.image,
+    required this.size,
+  });
+
+  final String url;
+  final ImageProvider image;
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => launchUrlString(url),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                // FIX: withOpacity deprecated — use withValues
+                color: Colors.grey.withValues(alpha: 0.25),
+                blurRadius: 16,
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Image(
+              image: image,
+              width: size,
+            ),
+          ),
+        ),
       ),
     );
   }

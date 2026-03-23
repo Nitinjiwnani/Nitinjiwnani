@@ -8,7 +8,9 @@ class AppIcons {
   static const scoodellogo = AssetImage('assets/icons/scoodel_logo.png');
   static const relaxalogo = AssetImage('assets/icons/relaxapp.png');
   static const billingfast = AssetImage('assets/icons/billingfast.png');
-  static const womros = AssetImage('assets/icons/wormos.jpeg');
+  static const sportsFiesta = AssetImage('assets/icons/sportsFiesta.png');
+  static const bhruguAstrology = AssetImage('assets/icons/bhruguAstrology.png');
+  static const wormos = AssetImage('assets/icons/wormos.jpeg');
   static const openai = AssetImage('assets/icons/openai.png');
   static const jetbrains = AssetImage('assets/icons/jetbrains.png');
   static const atom = AssetImage('assets/icons/atom.png');
